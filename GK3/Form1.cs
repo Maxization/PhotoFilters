@@ -12,9 +12,19 @@ namespace GK3
 {
     public partial class Form1 : Form
     {
+        DirectBitmap photo;
         public Form1()
         {
             InitializeComponent();
+            photo = new DirectBitmap(pictureBox.Width, pictureBox.Height);
+            pictureBox.Image = photo.Bitmap;
+        }
+
+        void UpdatePhoto(Bitmap b)
+        {
+            photo = new DirectBitmap(b);
+            pictureBox.Image = photo.Bitmap;
+            pictureBox.Refresh();
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -29,9 +39,7 @@ namespace GK3
                 {
                     string filePath = openFileDialog.FileName;
                     Bitmap bm = new Bitmap(filePath);
-                    bm = new Bitmap(bm, width, height);
-                    result = ConvertBitmap(bm);
-                    return true;
+                    UpdatePhoto(bm);
                 }
             }
         }

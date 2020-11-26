@@ -29,44 +29,43 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.UserMenu = new System.Windows.Forms.TableLayoutPanel();
             this.MenuFilters = new System.Windows.Forms.TableLayoutPanel();
             this.MenuBrushType = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelLabels = new System.Windows.Forms.TableLayoutPanel();
+            this.labelMode = new System.Windows.Forms.Label();
             this.labelStatic = new System.Windows.Forms.Label();
+            this.groupBoxMode = new System.Windows.Forms.GroupBox();
+            this.buttonWholePicture = new System.Windows.Forms.Button();
+            this.buttonDeletePolygon = new System.Windows.Forms.Button();
+            this.buttonBrush = new System.Windows.Forms.Button();
+            this.buttonAddPolygon = new System.Windows.Forms.Button();
+            this.groupBoxFilters = new System.Windows.Forms.GroupBox();
+            this.radioButtonOwn = new System.Windows.Forms.RadioButton();
+            this.radioButtonContrast = new System.Windows.Forms.RadioButton();
+            this.radioButtonGamma = new System.Windows.Forms.RadioButton();
+            this.radioButtonBrightness = new System.Windows.Forms.RadioButton();
+            this.radioButtonNegation = new System.Windows.Forms.RadioButton();
+            this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
+            this.pictureBoxOwnFunction = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanelHistograms = new System.Windows.Forms.TableLayoutPanel();
+            this.labelB = new System.Windows.Forms.Label();
+            this.labelG = new System.Windows.Forms.Label();
+            this.labelR = new System.Windows.Forms.Label();
+            this.pictureBoxHisR = new System.Windows.Forms.PictureBox();
+            this.pictureBoxHisG = new System.Windows.Forms.PictureBox();
+            this.pictureBoxHisB = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelMode = new System.Windows.Forms.Label();
-            this.groupBoxMode = new System.Windows.Forms.GroupBox();
-            this.buttonAddPolygon = new System.Windows.Forms.Button();
-            this.buttonBrush = new System.Windows.Forms.Button();
-            this.buttonDeletePolygon = new System.Windows.Forms.Button();
-            this.buttonWholePicture = new System.Windows.Forms.Button();
-            this.groupBoxFilters = new System.Windows.Forms.GroupBox();
-            this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
-            this.radioButtonNegation = new System.Windows.Forms.RadioButton();
-            this.radioButtonBrightness = new System.Windows.Forms.RadioButton();
-            this.radioButtonGamma = new System.Windows.Forms.RadioButton();
-            this.radioButtonContrast = new System.Windows.Forms.RadioButton();
-            this.radioButtonOwn = new System.Windows.Forms.RadioButton();
-            this.pictureBoxOwnFunction = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanelHistograms = new System.Windows.Forms.TableLayoutPanel();
-            this.labelR = new System.Windows.Forms.Label();
-            this.pictureBoxHisR = new System.Windows.Forms.PictureBox();
-            this.labelG = new System.Windows.Forms.Label();
-            this.pictureBoxHisG = new System.Windows.Forms.PictureBox();
-            this.labelB = new System.Windows.Forms.Label();
-            this.pictureBoxHisB = new System.Windows.Forms.PictureBox();
+            this.panelPhoto = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.UserMenu.SuspendLayout();
             this.MenuFilters.SuspendLayout();
             this.MenuBrushType.SuspendLayout();
             this.tableLayoutPanelLabels.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.groupBoxMode.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOwnFunction)).BeginInit();
@@ -74,6 +73,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisB)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.panelPhoto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -81,8 +83,8 @@
             this.MainPanel.ColumnCount = 2;
             this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.27236F));
             this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72764F));
-            this.MainPanel.Controls.Add(this.pictureBox, 0, 0);
             this.MainPanel.Controls.Add(this.UserMenu, 1, 0);
+            this.MainPanel.Controls.Add(this.panelPhoto, 0, 0);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 24);
             this.MainPanel.Name = "MainPanel";
@@ -90,16 +92,6 @@
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.MainPanel.Size = new System.Drawing.Size(984, 537);
             this.MainPanel.TabIndex = 0;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(469, 531);
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
             // 
             // UserMenu
             // 
@@ -163,49 +155,6 @@
             this.tableLayoutPanelLabels.Size = new System.Drawing.Size(211, 19);
             this.tableLayoutPanelLabels.TabIndex = 0;
             // 
-            // labelStatic
-            // 
-            this.labelStatic.AutoSize = true;
-            this.labelStatic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelStatic.Location = new System.Drawing.Point(3, 0);
-            this.labelStatic.Name = "labelStatic";
-            this.labelStatic.Size = new System.Drawing.Size(115, 19);
-            this.labelStatic.TabIndex = 0;
-            this.labelStatic.Text = "Selected mode:";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
             // labelMode
             // 
             this.labelMode.AutoSize = true;
@@ -216,6 +165,17 @@
             this.labelMode.Size = new System.Drawing.Size(84, 19);
             this.labelMode.TabIndex = 1;
             this.labelMode.Text = "Brush";
+            // 
+            // labelStatic
+            // 
+            this.labelStatic.AutoSize = true;
+            this.labelStatic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelStatic.Location = new System.Drawing.Point(3, 0);
+            this.labelStatic.Name = "labelStatic";
+            this.labelStatic.Size = new System.Drawing.Size(115, 19);
+            this.labelStatic.TabIndex = 0;
+            this.labelStatic.Text = "Selected mode:";
             // 
             // groupBoxMode
             // 
@@ -231,27 +191,16 @@
             this.groupBoxMode.TabStop = false;
             this.groupBoxMode.Text = "Mode";
             // 
-            // buttonAddPolygon
+            // buttonWholePicture
             // 
-            this.buttonAddPolygon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.buttonWholePicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddPolygon.Location = new System.Drawing.Point(6, 19);
-            this.buttonAddPolygon.Name = "buttonAddPolygon";
-            this.buttonAddPolygon.Size = new System.Drawing.Size(202, 23);
-            this.buttonAddPolygon.TabIndex = 0;
-            this.buttonAddPolygon.Text = "Add Polygon";
-            this.buttonAddPolygon.UseVisualStyleBackColor = true;
-            // 
-            // buttonBrush
-            // 
-            this.buttonBrush.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBrush.Location = new System.Drawing.Point(6, 77);
-            this.buttonBrush.Name = "buttonBrush";
-            this.buttonBrush.Size = new System.Drawing.Size(202, 23);
-            this.buttonBrush.TabIndex = 1;
-            this.buttonBrush.Text = "Brush";
-            this.buttonBrush.UseVisualStyleBackColor = true;
+            this.buttonWholePicture.Location = new System.Drawing.Point(6, 106);
+            this.buttonWholePicture.Name = "buttonWholePicture";
+            this.buttonWholePicture.Size = new System.Drawing.Size(202, 23);
+            this.buttonWholePicture.TabIndex = 3;
+            this.buttonWholePicture.Text = "The whole picture";
+            this.buttonWholePicture.UseVisualStyleBackColor = true;
             // 
             // buttonDeletePolygon
             // 
@@ -264,16 +213,27 @@
             this.buttonDeletePolygon.Text = "Delete Polygon";
             this.buttonDeletePolygon.UseVisualStyleBackColor = true;
             // 
-            // buttonWholePicture
+            // buttonBrush
             // 
-            this.buttonWholePicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.buttonBrush.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonWholePicture.Location = new System.Drawing.Point(6, 106);
-            this.buttonWholePicture.Name = "buttonWholePicture";
-            this.buttonWholePicture.Size = new System.Drawing.Size(202, 23);
-            this.buttonWholePicture.TabIndex = 3;
-            this.buttonWholePicture.Text = "The whole picture";
-            this.buttonWholePicture.UseVisualStyleBackColor = true;
+            this.buttonBrush.Location = new System.Drawing.Point(6, 77);
+            this.buttonBrush.Name = "buttonBrush";
+            this.buttonBrush.Size = new System.Drawing.Size(202, 23);
+            this.buttonBrush.TabIndex = 1;
+            this.buttonBrush.Text = "Brush";
+            this.buttonBrush.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddPolygon
+            // 
+            this.buttonAddPolygon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddPolygon.Location = new System.Drawing.Point(6, 19);
+            this.buttonAddPolygon.Name = "buttonAddPolygon";
+            this.buttonAddPolygon.Size = new System.Drawing.Size(202, 23);
+            this.buttonAddPolygon.TabIndex = 0;
+            this.buttonAddPolygon.Text = "Add Polygon";
+            this.buttonAddPolygon.UseVisualStyleBackColor = true;
             // 
             // groupBoxFilters
             // 
@@ -291,47 +251,15 @@
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Filters";
             // 
-            // radioButtonNoFilter
+            // radioButtonOwn
             // 
-            this.radioButtonNoFilter.AutoSize = true;
-            this.radioButtonNoFilter.Checked = true;
-            this.radioButtonNoFilter.Location = new System.Drawing.Point(9, 19);
-            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
-            this.radioButtonNoFilter.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonNoFilter.TabIndex = 0;
-            this.radioButtonNoFilter.TabStop = true;
-            this.radioButtonNoFilter.Text = "No filter";
-            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNegation
-            // 
-            this.radioButtonNegation.AutoSize = true;
-            this.radioButtonNegation.Location = new System.Drawing.Point(9, 42);
-            this.radioButtonNegation.Name = "radioButtonNegation";
-            this.radioButtonNegation.Size = new System.Drawing.Size(68, 17);
-            this.radioButtonNegation.TabIndex = 1;
-            this.radioButtonNegation.Text = "Negation";
-            this.radioButtonNegation.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonBrightness
-            // 
-            this.radioButtonBrightness.AutoSize = true;
-            this.radioButtonBrightness.Location = new System.Drawing.Point(9, 65);
-            this.radioButtonBrightness.Name = "radioButtonBrightness";
-            this.radioButtonBrightness.Size = new System.Drawing.Size(113, 17);
-            this.radioButtonBrightness.TabIndex = 2;
-            this.radioButtonBrightness.Text = "Brightness change";
-            this.radioButtonBrightness.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonGamma
-            // 
-            this.radioButtonGamma.AutoSize = true;
-            this.radioButtonGamma.Location = new System.Drawing.Point(9, 88);
-            this.radioButtonGamma.Name = "radioButtonGamma";
-            this.radioButtonGamma.Size = new System.Drawing.Size(111, 17);
-            this.radioButtonGamma.TabIndex = 3;
-            this.radioButtonGamma.Text = "Gamma correction";
-            this.radioButtonGamma.UseVisualStyleBackColor = true;
+            this.radioButtonOwn.AutoSize = true;
+            this.radioButtonOwn.Location = new System.Drawing.Point(9, 134);
+            this.radioButtonOwn.Name = "radioButtonOwn";
+            this.radioButtonOwn.Size = new System.Drawing.Size(88, 17);
+            this.radioButtonOwn.TabIndex = 5;
+            this.radioButtonOwn.Text = "Own function";
+            this.radioButtonOwn.UseVisualStyleBackColor = true;
             // 
             // radioButtonContrast
             // 
@@ -343,15 +271,47 @@
             this.radioButtonContrast.Text = "Contrast";
             this.radioButtonContrast.UseVisualStyleBackColor = true;
             // 
-            // radioButtonOwn
+            // radioButtonGamma
             // 
-            this.radioButtonOwn.AutoSize = true;
-            this.radioButtonOwn.Location = new System.Drawing.Point(9, 134);
-            this.radioButtonOwn.Name = "radioButtonOwn";
-            this.radioButtonOwn.Size = new System.Drawing.Size(88, 17);
-            this.radioButtonOwn.TabIndex = 5;
-            this.radioButtonOwn.Text = "Own function";
-            this.radioButtonOwn.UseVisualStyleBackColor = true;
+            this.radioButtonGamma.AutoSize = true;
+            this.radioButtonGamma.Location = new System.Drawing.Point(9, 88);
+            this.radioButtonGamma.Name = "radioButtonGamma";
+            this.radioButtonGamma.Size = new System.Drawing.Size(111, 17);
+            this.radioButtonGamma.TabIndex = 3;
+            this.radioButtonGamma.Text = "Gamma correction";
+            this.radioButtonGamma.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBrightness
+            // 
+            this.radioButtonBrightness.AutoSize = true;
+            this.radioButtonBrightness.Location = new System.Drawing.Point(9, 65);
+            this.radioButtonBrightness.Name = "radioButtonBrightness";
+            this.radioButtonBrightness.Size = new System.Drawing.Size(113, 17);
+            this.radioButtonBrightness.TabIndex = 2;
+            this.radioButtonBrightness.Text = "Brightness change";
+            this.radioButtonBrightness.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNegation
+            // 
+            this.radioButtonNegation.AutoSize = true;
+            this.radioButtonNegation.Location = new System.Drawing.Point(9, 42);
+            this.radioButtonNegation.Name = "radioButtonNegation";
+            this.radioButtonNegation.Size = new System.Drawing.Size(68, 17);
+            this.radioButtonNegation.TabIndex = 1;
+            this.radioButtonNegation.Text = "Negation";
+            this.radioButtonNegation.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNoFilter
+            // 
+            this.radioButtonNoFilter.AutoSize = true;
+            this.radioButtonNoFilter.Checked = true;
+            this.radioButtonNoFilter.Location = new System.Drawing.Point(9, 19);
+            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
+            this.radioButtonNoFilter.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonNoFilter.TabIndex = 0;
+            this.radioButtonNoFilter.TabStop = true;
+            this.radioButtonNoFilter.Text = "No filter";
+            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
             // 
             // pictureBoxOwnFunction
             // 
@@ -386,6 +346,28 @@
             this.tableLayoutPanelHistograms.Size = new System.Drawing.Size(268, 525);
             this.tableLayoutPanelHistograms.TabIndex = 1;
             // 
+            // labelB
+            // 
+            this.labelB.AutoSize = true;
+            this.labelB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelB.Location = new System.Drawing.Point(3, 350);
+            this.labelB.Name = "labelB";
+            this.labelB.Size = new System.Drawing.Size(262, 25);
+            this.labelB.TabIndex = 5;
+            this.labelB.Text = "B:";
+            // 
+            // labelG
+            // 
+            this.labelG.AutoSize = true;
+            this.labelG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelG.Location = new System.Drawing.Point(3, 175);
+            this.labelG.Name = "labelG";
+            this.labelG.Size = new System.Drawing.Size(262, 25);
+            this.labelG.TabIndex = 3;
+            this.labelG.Text = "G:";
+            // 
             // labelR
             // 
             this.labelR.AutoSize = true;
@@ -407,17 +389,6 @@
             this.pictureBoxHisR.TabIndex = 2;
             this.pictureBoxHisR.TabStop = false;
             // 
-            // labelG
-            // 
-            this.labelG.AutoSize = true;
-            this.labelG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelG.Location = new System.Drawing.Point(3, 175);
-            this.labelG.Name = "labelG";
-            this.labelG.Size = new System.Drawing.Size(262, 25);
-            this.labelG.TabIndex = 3;
-            this.labelG.Text = "G:";
-            // 
             // pictureBoxHisG
             // 
             this.pictureBoxHisG.BackColor = System.Drawing.Color.White;
@@ -428,17 +399,6 @@
             this.pictureBoxHisG.TabIndex = 4;
             this.pictureBoxHisG.TabStop = false;
             // 
-            // labelB
-            // 
-            this.labelB.AutoSize = true;
-            this.labelB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelB.Location = new System.Drawing.Point(3, 350);
-            this.labelB.Name = "labelB";
-            this.labelB.Size = new System.Drawing.Size(262, 25);
-            this.labelB.TabIndex = 5;
-            this.labelB.Text = "B:";
-            // 
             // pictureBoxHisB
             // 
             this.pictureBoxHisB.BackColor = System.Drawing.Color.White;
@@ -448,6 +408,58 @@
             this.pictureBoxHisB.Size = new System.Drawing.Size(262, 144);
             this.pictureBoxHisB.TabIndex = 6;
             this.pictureBoxHisB.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // panelPhoto
+            // 
+            this.panelPhoto.AutoScroll = true;
+            this.panelPhoto.Controls.Add(this.pictureBox);
+            this.panelPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPhoto.Location = new System.Drawing.Point(3, 3);
+            this.panelPhoto.Name = "panelPhoto";
+            this.panelPhoto.Size = new System.Drawing.Size(469, 531);
+            this.panelPhoto.TabIndex = 2;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(469, 531);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.TabIndex = 1;
+            this.pictureBox.TabStop = false;
             // 
             // Form1
             // 
@@ -461,14 +473,11 @@
             this.Name = "Form1";
             this.Text = "Photo Filters";
             this.MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.UserMenu.ResumeLayout(false);
             this.MenuFilters.ResumeLayout(false);
             this.MenuBrushType.ResumeLayout(false);
             this.tableLayoutPanelLabels.ResumeLayout(false);
             this.tableLayoutPanelLabels.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.groupBoxMode.ResumeLayout(false);
             this.groupBoxFilters.ResumeLayout(false);
             this.groupBoxFilters.PerformLayout();
@@ -478,6 +487,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHisB)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panelPhoto.ResumeLayout(false);
+            this.panelPhoto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,7 +500,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel MainPanel;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.TableLayoutPanel UserMenu;
         private System.Windows.Forms.TableLayoutPanel MenuFilters;
         private System.Windows.Forms.TableLayoutPanel MenuBrushType;
@@ -517,6 +530,8 @@
         private System.Windows.Forms.PictureBox pictureBoxHisR;
         private System.Windows.Forms.PictureBox pictureBoxHisG;
         private System.Windows.Forms.PictureBox pictureBoxHisB;
+        private System.Windows.Forms.Panel panelPhoto;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
 

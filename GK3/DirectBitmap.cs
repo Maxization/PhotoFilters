@@ -42,6 +42,14 @@ namespace GK3
             }
         }
 
+        public void DrawImage(Bitmap b)
+        {
+            using (Graphics g = Graphics.FromImage(Bitmap))
+            {
+                g.DrawImage(b, 0, 0);
+            }
+        }
+
         public void SetPixel(int x, int y, Color colour)
         {
             int index = x + (y * Width);
