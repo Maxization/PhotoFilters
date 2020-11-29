@@ -32,6 +32,11 @@ namespace GK3
             this.Y = Y;
         }
 
+        public double DistanceToPoint(Point p)
+        {
+            return Math.Sqrt((p.X - X) * (p.X - X) + (p.Y - Y) * (p.Y - Y));
+        }
+
         public static implicit operator Point(Vertex v)
         {
             return new Point(v.X, v.Y);
@@ -53,10 +58,10 @@ namespace GK3
             this.B = b;
         }
 
-        public double DistanceToVertex(Point p)
+        public double DistanceToPoint(Point p)
         {
-            double dsc1 = Math.Sqrt((p.X - A.X) * (p.X - A.X) + (p.Y - A.Y) * (p.Y - A.Y));
-            double dsc2 = Math.Sqrt((p.X - B.X) * (p.X - B.X) + (p.Y - B.Y) * (p.Y - B.Y));
+            double dsc1 = A.DistanceToPoint(p);
+            double dsc2 = B.DistanceToPoint(p);
 
             return Math.Min(dsc1, dsc2);
         }
@@ -84,7 +89,7 @@ namespace GK3
             double min = double.MaxValue;
             foreach(Edge e in edges)
             {
-                double tmp = e.DistanceToVertex(p);
+                double tmp = e.DistanceToPoint(p);
                 if (tmp < min) min = tmp; 
             }
             return min;

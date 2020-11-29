@@ -141,4 +141,28 @@ namespace GK3.Filters
             return base.Handle(type, color);
         }
     }
+
+    public class OwnFunctionFilter : BaseFilter
+    {
+        FilterType filterType = FilterType.OwnFunction;
+        Vertex[] ownFunction;
+        public OwnFunctionFilter(Vertex[] ownFunction)
+        {
+            this.ownFunction = ownFunction;
+        }
+
+        public override Color Handle(FilterType type, Color color)
+        {
+            if (filterType == type)
+            {
+                int R = color.R;
+                int G = color.G;
+                int B = color.B;
+            }
+
+            if (next != null)
+                return next.Handle(type, color);
+            return base.Handle(type, color);
+        }
+    }
 }

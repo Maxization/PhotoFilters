@@ -50,6 +50,7 @@ namespace GK3
 
         bool isPolygonCreating;
         bool isDrawing;
+        Vertex[] ownFunction;
 
         public Form1()
         {
@@ -66,6 +67,9 @@ namespace GK3
 
             isPolygonCreating = false;
             isDrawing = false;
+            ownFunction = new Vertex[10];
+            FillFunction(ownFunction);
+            
             setMode(ModeType.AddPolygon);
             filterType = FilterType.NoFilter;
 
@@ -82,10 +86,22 @@ namespace GK3
             histG.Series[0].Color = Color.Green;
             histB.Series[0].Color = Color.Blue;
 
+            DrawOwnFunctionAxis();
             DrawOwnFunction();
             UpdatePhoto();
         }
 
+        void FillFunction(Vertex[] ownF)
+        {
+            ownF[0] = new Vertex(0, 0);
+            ownF[9] = new Vertex(255, 255);
+
+            Random rnd = new Random(2137);
+            for(int i=1;i<9;i++)
+            {
+                ownF[i] = new Vertex(i * 26, rnd.Next(0, 256));
+            }
+        }
         void LoadPhoto(Bitmap b)
         {
             photo.Dispose();
@@ -117,7 +133,7 @@ namespace GK3
             if(!isDrawing)
             {
                 var data = CreateHistogramR();
-                DrawHistogramR(data);
+                DrawHistogram(data);
             }
                 
             pictureBox.Invalidate();
@@ -150,13 +166,49 @@ namespace GK3
             }
         }
 
+        void DrawOwnFunctionAxis()
+        {
+            using (Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
+            {
+                Font myFont = new Font("Arial", 8);
+                g.DrawLine(Pens.Black, 20, 20, 20, 170);
+                g.DrawLine(Pens.Black, 20, 170, 200, 170);
+                g.DrawString("255", myFont, Brushes.Black, 0, 20);
+                g.DrawString("0", myFont, Brushes.Black, 10, 170);
+                g.DrawString("255", myFont, Brushes.Black, 170, 170);
+            }
+        }
         void DrawOwnFunction()
         {
             using(Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
             {
-                g.DrawLine(Pens.Black, 20, 20, 20, 170);
-                g.DrawLine(Pens.Black, 20, 170, 200, 170);
+                g.Clear(Color.White);
+                DrawOwnFunctionAxis();
+                int x1, y1;
+                x1 = y1 = 0;
+                for(int i=0;i<10;i++)
+                {
+                    var k = FromPlotToPicturebox(ownFunction[i]);
+
+                    g.FillEllipse(Brushes.Black, k.X - 3, k.Y - 3, 6, 6);
+                    if(i!=0)
+                    {
+                        g.DrawLine(Pens.Black, x1, y1, k.X, k.Y);
+                    }
+                    x1 = k.X;
+                    y1 = k.Y;
+                } 
             }
+            pictureBoxOwnFunction.Invalidate();
+        }
+
+        (int X, int Y) FromPlotToPicturebox(Vertex v)
+        {
+            (int X, int Y) k;
+            k.X = (int)(v.X / 1.7) + 20;
+            k.Y = 170 - (int)(v.Y / 1.7);
+            return k;
+
         }
         (int[] R,int[] G,int[] B) CreateHistogramR()
         {
@@ -179,7 +231,7 @@ namespace GK3
             return (dataR, dataB, dataG);
         }
 
-        void DrawHistogramR((int[] R, int[] B, int[] G) k)
+        void DrawHistogram((int[] R, int[] B, int[] G) k)
         {
             histR.Series[0].Points.DataBindY(k.R);
             histG.Series[0].Points.DataBindY(k.G);
@@ -295,7 +347,7 @@ namespace GK3
             {
                 isDrawing = false;
                 var data = CreateHistogramR();
-                DrawHistogramR(data);
+                DrawHistogram(data);
             }
         }
         #endregion
@@ -364,6 +416,60 @@ namespace GK3
         }
         #endregion
 
+
+        bool dragVertex = false;
+        Vertex movingVertex;
+        int vertexNr;
+        private void pictureBoxOwnFunction_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                if(!dragVertex)
+                {    
+                    movingVertex = FindVertex(e.Location);
+                    if(movingVertex != null)
+                        dragVertex = true;
+                }
+            }
+        }
+
+        private void pictureBoxOwnFunction_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(dragVertex)
+            {
+                var k = FromPlotToPicturebox(ownFunction[vertexNr - 1]);
+                var k2 = FromPlotToPicturebox(ownFunction[vertexNr + 1]);
+                if(e.Location.X > k.X && e.Location.X < k2.X
+                    && e.Location.Y >= 20 && e.Location.Y <= 170)
+                {
+                    movingVertex.X = (int)((e.Location.X - 20) * 1.7);
+                    movingVertex.Y = (int)((170 - e.Location.Y) * 1.7);
+                    DrawOwnFunction();
+                }
+            }
+        }
+
+        private void pictureBoxOwnFunction_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (dragVertex)
+                dragVertex = false;
+        }
+
+        Vertex FindVertex(Point p)
+        {
+            for (int i = 1; i < ownFunction.Length - 1; i++)
+            {
+                var k = FromPlotToPicturebox(ownFunction[i]);
+
+                double dist = Math.Sqrt((k.X - p.X) * (k.X - p.X) + (k.Y - p.Y) * (k.Y - p.Y));
+                if (dist < 5)
+                {
+                    vertexNr = i;
+                    return ownFunction[i];
+                }
+            }
+            return null;
+        }
         void FilterOnWholePhoto()
         {
             using(Graphics g = Graphics.FromImage(photo.Bitmap))
@@ -384,7 +490,5 @@ namespace GK3
                 UpdatePhoto();
             }
         }
-
-        
     }
 }

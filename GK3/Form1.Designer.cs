@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.UserMenu = new System.Windows.Forms.TableLayoutPanel();
             this.MenuFilters = new System.Windows.Forms.TableLayoutPanel();
@@ -338,6 +338,9 @@
             this.pictureBoxOwnFunction.Size = new System.Drawing.Size(225, 188);
             this.pictureBoxOwnFunction.TabIndex = 2;
             this.pictureBoxOwnFunction.TabStop = false;
+            this.pictureBoxOwnFunction.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxOwnFunction_MouseDown);
+            this.pictureBoxOwnFunction.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxOwnFunction_MouseMove);
+            this.pictureBoxOwnFunction.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxOwnFunction_MouseUp);
             // 
             // tableLayoutPanelHistograms
             // 
@@ -397,39 +400,39 @@
             // 
             // histR
             // 
-            chartArea1.Name = "ChartArea1";
-            this.histR.ChartAreas.Add(chartArea1);
+            chartArea13.Name = "ChartArea1";
+            this.histR.ChartAreas.Add(chartArea13);
             this.histR.Location = new System.Drawing.Point(3, 28);
             this.histR.Name = "histR";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.histR.Series.Add(series1);
+            series13.ChartArea = "ChartArea1";
+            series13.Name = "Series1";
+            this.histR.Series.Add(series13);
             this.histR.Size = new System.Drawing.Size(245, 144);
             this.histR.TabIndex = 7;
             this.histR.Text = "histogramr";
             // 
             // histG
             // 
-            chartArea2.Name = "ChartArea1";
-            this.histG.ChartAreas.Add(chartArea2);
+            chartArea14.Name = "ChartArea1";
+            this.histG.ChartAreas.Add(chartArea14);
             this.histG.Location = new System.Drawing.Point(3, 203);
             this.histG.Name = "histG";
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            this.histG.Series.Add(series2);
+            series14.ChartArea = "ChartArea1";
+            series14.Name = "Series1";
+            this.histG.Series.Add(series14);
             this.histG.Size = new System.Drawing.Size(245, 144);
             this.histG.TabIndex = 8;
             this.histG.Text = "chart1";
             // 
             // histB
             // 
-            chartArea3.Name = "ChartArea1";
-            this.histB.ChartAreas.Add(chartArea3);
+            chartArea15.Name = "ChartArea1";
+            this.histB.ChartAreas.Add(chartArea15);
             this.histB.Location = new System.Drawing.Point(3, 378);
             this.histB.Name = "histB";
-            series3.ChartArea = "ChartArea1";
-            series3.Name = "Series1";
-            this.histB.Series.Add(series3);
+            series15.ChartArea = "ChartArea1";
+            series15.Name = "Series1";
+            this.histB.Series.Add(series15);
             this.histB.Size = new System.Drawing.Size(245, 144);
             this.histB.TabIndex = 9;
             this.histB.Text = "chart1";
