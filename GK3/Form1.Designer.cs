@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.UserMenu = new System.Windows.Forms.TableLayoutPanel();
             this.MenuFilters = new System.Windows.Forms.TableLayoutPanel();
@@ -87,15 +87,15 @@
             // MainPanel
             // 
             this.MainPanel.ColumnCount = 2;
-            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.78049F));
-            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.21951F));
+            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
             this.MainPanel.Controls.Add(this.UserMenu, 1, 0);
             this.MainPanel.Controls.Add(this.panelPhoto, 0, 0);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 24);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.RowCount = 1;
-            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainPanel.Size = new System.Drawing.Size(1084, 537);
             this.MainPanel.TabIndex = 0;
             // 
@@ -107,11 +107,11 @@
             this.UserMenu.Controls.Add(this.MenuFilters, 0, 0);
             this.UserMenu.Controls.Add(this.tableLayoutPanelHistograms, 1, 0);
             this.UserMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserMenu.Location = new System.Drawing.Point(531, 3);
+            this.UserMenu.Location = new System.Drawing.Point(587, 3);
             this.UserMenu.Name = "UserMenu";
             this.UserMenu.RowCount = 1;
             this.UserMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.UserMenu.Size = new System.Drawing.Size(550, 531);
+            this.UserMenu.Size = new System.Drawing.Size(494, 531);
             this.UserMenu.TabIndex = 1;
             // 
             // MenuFilters
@@ -125,10 +125,10 @@
             this.MenuFilters.Location = new System.Drawing.Point(3, 3);
             this.MenuFilters.Name = "MenuFilters";
             this.MenuFilters.RowCount = 3;
-            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.03489F));
-            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.96511F));
-            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.MenuFilters.Size = new System.Drawing.Size(258, 525);
+            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.69231F));
+            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.30769F));
+            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 193F));
+            this.MenuFilters.Size = new System.Drawing.Size(231, 525);
             this.MenuFilters.TabIndex = 0;
             // 
             // MenuBrushType
@@ -143,7 +143,7 @@
             this.MenuBrushType.RowCount = 2;
             this.MenuBrushType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.90683F));
             this.MenuBrushType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.09317F));
-            this.MenuBrushType.Size = new System.Drawing.Size(252, 173);
+            this.MenuBrushType.Size = new System.Drawing.Size(225, 165);
             this.MenuBrushType.TabIndex = 0;
             // 
             // tableLayoutPanelLabels
@@ -158,7 +158,7 @@
             this.tableLayoutPanelLabels.Name = "tableLayoutPanelLabels";
             this.tableLayoutPanelLabels.RowCount = 1;
             this.tableLayoutPanelLabels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelLabels.Size = new System.Drawing.Size(246, 19);
+            this.tableLayoutPanelLabels.Size = new System.Drawing.Size(219, 18);
             this.tableLayoutPanelLabels.TabIndex = 0;
             // 
             // labelMode
@@ -166,9 +166,9 @@
             this.labelMode.AutoSize = true;
             this.labelMode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelMode.Location = new System.Drawing.Point(89, 0);
+            this.labelMode.Location = new System.Drawing.Point(79, 0);
             this.labelMode.Name = "labelMode";
-            this.labelMode.Size = new System.Drawing.Size(154, 19);
+            this.labelMode.Size = new System.Drawing.Size(137, 18);
             this.labelMode.TabIndex = 1;
             this.labelMode.Text = "Brush";
             // 
@@ -179,7 +179,7 @@
             this.labelStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelStatic.Location = new System.Drawing.Point(3, 0);
             this.labelStatic.Name = "labelStatic";
-            this.labelStatic.Size = new System.Drawing.Size(80, 19);
+            this.labelStatic.Size = new System.Drawing.Size(70, 18);
             this.labelStatic.TabIndex = 0;
             this.labelStatic.Text = "Selected:";
             // 
@@ -190,9 +190,9 @@
             this.groupBoxMode.Controls.Add(this.buttonBrush);
             this.groupBoxMode.Controls.Add(this.buttonAddPolygon);
             this.groupBoxMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxMode.Location = new System.Drawing.Point(3, 28);
+            this.groupBoxMode.Location = new System.Drawing.Point(3, 27);
             this.groupBoxMode.Name = "groupBoxMode";
-            this.groupBoxMode.Size = new System.Drawing.Size(246, 142);
+            this.groupBoxMode.Size = new System.Drawing.Size(219, 135);
             this.groupBoxMode.TabIndex = 1;
             this.groupBoxMode.TabStop = false;
             this.groupBoxMode.Text = "Mode";
@@ -203,7 +203,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonWholePicture.Location = new System.Drawing.Point(6, 106);
             this.buttonWholePicture.Name = "buttonWholePicture";
-            this.buttonWholePicture.Size = new System.Drawing.Size(237, 23);
+            this.buttonWholePicture.Size = new System.Drawing.Size(210, 23);
             this.buttonWholePicture.TabIndex = 3;
             this.buttonWholePicture.Text = "The whole picture";
             this.buttonWholePicture.UseVisualStyleBackColor = true;
@@ -215,7 +215,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeletePolygon.Location = new System.Drawing.Point(6, 48);
             this.buttonDeletePolygon.Name = "buttonDeletePolygon";
-            this.buttonDeletePolygon.Size = new System.Drawing.Size(237, 23);
+            this.buttonDeletePolygon.Size = new System.Drawing.Size(210, 23);
             this.buttonDeletePolygon.TabIndex = 2;
             this.buttonDeletePolygon.Text = "Delete Polygon";
             this.buttonDeletePolygon.UseVisualStyleBackColor = true;
@@ -227,7 +227,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBrush.Location = new System.Drawing.Point(6, 77);
             this.buttonBrush.Name = "buttonBrush";
-            this.buttonBrush.Size = new System.Drawing.Size(237, 23);
+            this.buttonBrush.Size = new System.Drawing.Size(210, 23);
             this.buttonBrush.TabIndex = 1;
             this.buttonBrush.Text = "Brush";
             this.buttonBrush.UseVisualStyleBackColor = true;
@@ -239,7 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddPolygon.Location = new System.Drawing.Point(6, 19);
             this.buttonAddPolygon.Name = "buttonAddPolygon";
-            this.buttonAddPolygon.Size = new System.Drawing.Size(237, 23);
+            this.buttonAddPolygon.Size = new System.Drawing.Size(210, 23);
             this.buttonAddPolygon.TabIndex = 0;
             this.buttonAddPolygon.Text = "Add Polygon";
             this.buttonAddPolygon.UseVisualStyleBackColor = true;
@@ -254,9 +254,9 @@
             this.groupBoxFilters.Controls.Add(this.radioButtonNegation);
             this.groupBoxFilters.Controls.Add(this.radioButtonNoFilter);
             this.groupBoxFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxFilters.Location = new System.Drawing.Point(3, 182);
+            this.groupBoxFilters.Location = new System.Drawing.Point(3, 174);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(252, 159);
+            this.groupBoxFilters.Size = new System.Drawing.Size(225, 154);
             this.groupBoxFilters.TabIndex = 1;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Filters";
@@ -333,9 +333,9 @@
             // 
             this.pictureBoxOwnFunction.BackColor = System.Drawing.Color.White;
             this.pictureBoxOwnFunction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxOwnFunction.Location = new System.Drawing.Point(3, 347);
+            this.pictureBoxOwnFunction.Location = new System.Drawing.Point(3, 334);
             this.pictureBoxOwnFunction.Name = "pictureBoxOwnFunction";
-            this.pictureBoxOwnFunction.Size = new System.Drawing.Size(252, 175);
+            this.pictureBoxOwnFunction.Size = new System.Drawing.Size(225, 188);
             this.pictureBoxOwnFunction.TabIndex = 2;
             this.pictureBoxOwnFunction.TabStop = false;
             // 
@@ -350,7 +350,7 @@
             this.tableLayoutPanelHistograms.Controls.Add(this.histG, 0, 3);
             this.tableLayoutPanelHistograms.Controls.Add(this.histB, 0, 5);
             this.tableLayoutPanelHistograms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelHistograms.Location = new System.Drawing.Point(267, 3);
+            this.tableLayoutPanelHistograms.Location = new System.Drawing.Point(240, 3);
             this.tableLayoutPanelHistograms.Name = "tableLayoutPanelHistograms";
             this.tableLayoutPanelHistograms.RowCount = 6;
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.950495F));
@@ -359,7 +359,7 @@
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.71287F));
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.950495F));
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.72277F));
-            this.tableLayoutPanelHistograms.Size = new System.Drawing.Size(280, 525);
+            this.tableLayoutPanelHistograms.Size = new System.Drawing.Size(251, 525);
             this.tableLayoutPanelHistograms.TabIndex = 1;
             // 
             // labelB
@@ -369,7 +369,7 @@
             this.labelB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelB.Location = new System.Drawing.Point(3, 350);
             this.labelB.Name = "labelB";
-            this.labelB.Size = new System.Drawing.Size(274, 25);
+            this.labelB.Size = new System.Drawing.Size(245, 25);
             this.labelB.TabIndex = 5;
             this.labelB.Text = "B:";
             // 
@@ -380,7 +380,7 @@
             this.labelG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelG.Location = new System.Drawing.Point(3, 175);
             this.labelG.Name = "labelG";
-            this.labelG.Size = new System.Drawing.Size(274, 25);
+            this.labelG.Size = new System.Drawing.Size(245, 25);
             this.labelG.TabIndex = 3;
             this.labelG.Text = "G:";
             // 
@@ -391,46 +391,46 @@
             this.labelR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelR.Location = new System.Drawing.Point(3, 0);
             this.labelR.Name = "labelR";
-            this.labelR.Size = new System.Drawing.Size(274, 25);
+            this.labelR.Size = new System.Drawing.Size(245, 25);
             this.labelR.TabIndex = 1;
             this.labelR.Text = "R:";
             // 
             // histR
             // 
-            chartArea4.Name = "ChartArea1";
-            this.histR.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.histR.ChartAreas.Add(chartArea1);
             this.histR.Location = new System.Drawing.Point(3, 28);
             this.histR.Name = "histR";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            this.histR.Series.Add(series4);
-            this.histR.Size = new System.Drawing.Size(247, 144);
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            this.histR.Series.Add(series1);
+            this.histR.Size = new System.Drawing.Size(245, 144);
             this.histR.TabIndex = 7;
             this.histR.Text = "histogramr";
             // 
             // histG
             // 
-            chartArea5.Name = "ChartArea1";
-            this.histG.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.histG.ChartAreas.Add(chartArea2);
             this.histG.Location = new System.Drawing.Point(3, 203);
             this.histG.Name = "histG";
-            series5.ChartArea = "ChartArea1";
-            series5.Name = "Series1";
-            this.histG.Series.Add(series5);
-            this.histG.Size = new System.Drawing.Size(247, 144);
+            series2.ChartArea = "ChartArea1";
+            series2.Name = "Series1";
+            this.histG.Series.Add(series2);
+            this.histG.Size = new System.Drawing.Size(245, 144);
             this.histG.TabIndex = 8;
             this.histG.Text = "chart1";
             // 
             // histB
             // 
-            chartArea6.Name = "ChartArea1";
-            this.histB.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.histB.ChartAreas.Add(chartArea3);
             this.histB.Location = new System.Drawing.Point(3, 378);
             this.histB.Name = "histB";
-            series6.ChartArea = "ChartArea1";
-            series6.Name = "Series1";
-            this.histB.Series.Add(series6);
-            this.histB.Size = new System.Drawing.Size(247, 144);
+            series3.ChartArea = "ChartArea1";
+            series3.Name = "Series1";
+            this.histB.Series.Add(series3);
+            this.histB.Size = new System.Drawing.Size(245, 144);
             this.histB.TabIndex = 9;
             this.histB.Text = "chart1";
             // 
@@ -441,7 +441,7 @@
             this.panelPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPhoto.Location = new System.Drawing.Point(3, 3);
             this.panelPhoto.Name = "panelPhoto";
-            this.panelPhoto.Size = new System.Drawing.Size(522, 531);
+            this.panelPhoto.Size = new System.Drawing.Size(578, 531);
             this.panelPhoto.TabIndex = 2;
             // 
             // pictureBox

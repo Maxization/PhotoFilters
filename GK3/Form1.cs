@@ -38,6 +38,7 @@ namespace GK3
         DirectBitmap photo;
         DirectBitmap orginalPicture;
         DirectBitmap transformedPicture;
+        DirectBitmap ownFunctionPicture;
         Bitmap beforeCreating;
         MyBrush brush;
 
@@ -56,9 +57,11 @@ namespace GK3
             photo = new DirectBitmap(GK3.Properties.Resources.Lenna);
             orginalPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
             transformedPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
+            ownFunctionPicture = new DirectBitmap(300, 300);
             brush = new MyBrush();
 
             pictureBox.Image = photo.Bitmap;
+            pictureBoxOwnFunction.Image = ownFunctionPicture.Bitmap;
             polygons = new List<Polygon>();
 
             isPolygonCreating = false;
@@ -71,7 +74,6 @@ namespace GK3
             IFilter contrast = new ContrastFilter();
             IFilter gammaCorrection = new GammaCorrectionFilter();
 
-
             filter.setNext(brightness);
             brightness.setNext(contrast);
             contrast.setNext(gammaCorrection);
@@ -80,6 +82,7 @@ namespace GK3
             histG.Series[0].Color = Color.Green;
             histB.Series[0].Color = Color.Blue;
 
+            DrawOwnFunction();
             UpdatePhoto();
         }
 
@@ -111,8 +114,11 @@ namespace GK3
                 poly.Draw(photo);
             }
 
-            var data = CreateHistogramR();
-            DrawHistogramR(data);
+            if(!isDrawing)
+            {
+                var data = CreateHistogramR();
+                DrawHistogramR(data);
+            }
                 
             pictureBox.Invalidate();
         }
@@ -144,6 +150,14 @@ namespace GK3
             }
         }
 
+        void DrawOwnFunction()
+        {
+            using(Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
+            {
+                g.DrawLine(Pens.Black, 20, 20, 20, 170);
+                g.DrawLine(Pens.Black, 20, 170, 200, 170);
+            }
+        }
         (int[] R,int[] G,int[] B) CreateHistogramR()
         {
             int[] dataR = new int[256];
@@ -152,16 +166,16 @@ namespace GK3
             int width = photo.Width;
             int height = photo.Height;
 
-            for(int i=0;i<height;i++)
-            {
-                for(int j=0;j<width;j++)
-                {
-                    Color col = photo.GetPixel(j, i);
-                    dataR[col.R]++;
-                    dataG[col.G]++;
-                    dataB[col.B]++;
-                }
-            }
+            Parallel.For(0, height, (i) =>
+             {
+                 for (int j = 0; j < width; j++)
+                 {
+                     Color col = photo.GetPixel(j, i);
+                     dataR[col.R]++;
+                     dataG[col.G]++;
+                     dataB[col.B]++;
+                 }
+             });
             return (dataR, dataB, dataG);
         }
 
@@ -278,7 +292,11 @@ namespace GK3
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             if (isDrawing)
+            {
                 isDrawing = false;
+                var data = CreateHistogramR();
+                DrawHistogramR(data);
+            }
         }
         #endregion
 

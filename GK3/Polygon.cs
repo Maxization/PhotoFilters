@@ -208,8 +208,8 @@ namespace GK3
 
     public class MyBrush
     {
-        int width = 20;
-        int height = 20;
+        int width = 30;
+        int height = 30;
 
         public void Fill(DirectBitmap actualBm, DirectBitmap orginalBm, IFilter filter, FilterType filterType, int X, int Y)
         {
