@@ -39,6 +39,7 @@ namespace GK3
         DirectBitmap orginalPicture;
         DirectBitmap transformedPicture;
         Bitmap beforeCreating;
+        MyBrush brush;
 
         Edge newEdge;
         Vertex newPoint, startPoint;
@@ -55,6 +56,7 @@ namespace GK3
             photo = new DirectBitmap(GK3.Properties.Resources.Lenna);
             orginalPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
             transformedPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
+            brush = new MyBrush();
 
             pictureBox.Image = photo.Bitmap;
             polygons = new List<Polygon>();
@@ -98,7 +100,7 @@ namespace GK3
 
         void UpdatePhoto()
         {
-            using(Graphics g = Graphics.FromImage(photo.Bitmap))
+            using (Graphics g = Graphics.FromImage(photo.Bitmap))
             {
                 g.DrawImage(transformedPicture.Bitmap, 0, 0);
             }
@@ -172,8 +174,8 @@ namespace GK3
 
         void DrawBrush(Point p)
         {
-            Elipse elipse = new Elipse();
-            elipse.Fill(photo, transformedPicture, filter, p.X, p.Y);
+            if (p.X < 0 || p.Y < 0 || p.X >= pictureBox.Width || p.Y >= pictureBox.Height) return;
+            brush.Fill(transformedPicture, orginalPicture, filter, filterType, p.X, p.Y);
             UpdatePhoto();
         }
         #region MainPicturebox handlers
@@ -188,7 +190,6 @@ namespace GK3
             if(isDrawing)
             {
                 DrawBrush(e.Location);
-                UpdatePhoto();
             }
 
         }
@@ -357,7 +358,8 @@ namespace GK3
                 {
                     for (int j = 0; j < width; j++)
                     {
-                        Color col = filter.Handle(filterType, orginalPicture, j, i);
+                        Color color = orginalPicture.GetPixel(j, i);
+                        Color col = filter.Handle(filterType, color);
                         transformedPicture.SetPixel(j, i, col);
                     }
                 }

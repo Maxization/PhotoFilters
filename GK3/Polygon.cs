@@ -189,7 +189,8 @@ namespace GK3
 
                     for (int x = xMin; x <= xMax; x++)
                     {
-                        Color color = filter.Handle(filterType, orginalBm, x, y);
+                        Color col = orginalBm.GetPixel(x, y);
+                        Color color = filter.Handle(filterType, col);
                         actualBm.SetPixel(x, y, color);
                     }
                 }
@@ -205,13 +206,16 @@ namespace GK3
         }
     }
 
-    public class Elipse
+    public class MyBrush
     {
         int width = 20;
         int height = 20;
 
-        public void Fill(DirectBitmap actualBm, DirectBitmap orginalBm, IFilter filter, int X, int Y)
+        public void Fill(DirectBitmap actualBm, DirectBitmap orginalBm, IFilter filter, FilterType filterType, int X, int Y)
         {
+            int Width = actualBm.Width;
+            int Height = actualBm.Height;
+
             int hh = height * height;
             int ww = width * width;
             int hhww = hh * ww;
@@ -219,7 +223,13 @@ namespace GK3
             int dx = 0;
 
             for (int x = -width; x <= width; x++)
-                orginalBm.SetPixel(X + x, Y, Color.Black);
+                if(X+x < Width && X+x>=0)
+                {
+                    Color color = orginalBm.GetPixel(X + x, Y);
+                    Color col = filter.Handle(filterType, color);
+                    actualBm.SetPixel(X + x, Y, col);
+                }
+                    
 
             for (int y = 1; y <= height; y++)
             {
@@ -232,8 +242,22 @@ namespace GK3
 
                 for (int x = -x0; x <= x0; x++)
                 {
-                    orginalBm.SetPixel(X + x, Y - y, Color.Black);
-                    orginalBm.SetPixel(X + x, Y + y, Color.Black);
+                    if (X + x < Width && X + x >= 0)
+                    {
+                        if (Y - y < Height && Y - y >= 0)
+                        {
+                            Color color = orginalBm.GetPixel(X + x, Y - y);
+                            Color col = filter.Handle(filterType, color);
+                            actualBm.SetPixel(X + x, Y - y, col);
+
+                        }   
+                        if(Y + y < Height && Y + y >= 0)
+                        {
+                            Color color = orginalBm.GetPixel(X + x, Y + y);
+                            Color col = filter.Handle(filterType, color);
+                            actualBm.SetPixel(X + x, Y + y, col);
+                        }
+                    }       
                 }
             }
         }
