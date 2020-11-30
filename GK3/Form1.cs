@@ -77,10 +77,12 @@ namespace GK3
             IFilter brightness = new BrightnessChangeFilter();
             IFilter contrast = new ContrastFilter();
             IFilter gammaCorrection = new GammaCorrectionFilter();
+            IFilter ownFunctionFilter = new OwnFunctionFilter(ownFunction);
 
             filter.setNext(brightness);
             brightness.setNext(contrast);
             contrast.setNext(gammaCorrection);
+            gammaCorrection.setNext(ownFunctionFilter);
 
             histR.Series[0].Color = Color.Red;
             histG.Series[0].Color = Color.Green;
