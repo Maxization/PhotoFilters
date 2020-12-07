@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.UserMenu = new System.Windows.Forms.TableLayoutPanel();
             this.MenuFilters = new System.Windows.Forms.TableLayoutPanel();
@@ -47,6 +47,12 @@
             this.buttonBrush = new System.Windows.Forms.Button();
             this.buttonAddPolygon = new System.Windows.Forms.Button();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
+            this.contrastAdd = new System.Windows.Forms.Button();
+            this.contrastSub = new System.Windows.Forms.Button();
+            this.gammaAdd = new System.Windows.Forms.Button();
+            this.gammaSub = new System.Windows.Forms.Button();
+            this.BrightnessAdd = new System.Windows.Forms.Button();
+            this.BrightnessSub = new System.Windows.Forms.Button();
             this.radioButtonOwn = new System.Windows.Forms.RadioButton();
             this.radioButtonContrast = new System.Windows.Forms.RadioButton();
             this.radioButtonGamma = new System.Windows.Forms.RadioButton();
@@ -66,7 +72,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel.SuspendLayout();
             this.UserMenu.SuspendLayout();
             this.MenuFilters.SuspendLayout();
@@ -96,7 +101,7 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.RowCount = 1;
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainPanel.Size = new System.Drawing.Size(1084, 537);
+            this.MainPanel.Size = new System.Drawing.Size(1084, 587);
             this.MainPanel.TabIndex = 0;
             // 
             // UserMenu
@@ -111,7 +116,7 @@
             this.UserMenu.Name = "UserMenu";
             this.UserMenu.RowCount = 1;
             this.UserMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.UserMenu.Size = new System.Drawing.Size(494, 531);
+            this.UserMenu.Size = new System.Drawing.Size(494, 581);
             this.UserMenu.TabIndex = 1;
             // 
             // MenuFilters
@@ -125,10 +130,10 @@
             this.MenuFilters.Location = new System.Drawing.Point(3, 3);
             this.MenuFilters.Name = "MenuFilters";
             this.MenuFilters.RowCount = 3;
-            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.69231F));
-            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.30769F));
+            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.83202F));
+            this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.16798F));
             this.MenuFilters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 193F));
-            this.MenuFilters.Size = new System.Drawing.Size(231, 525);
+            this.MenuFilters.Size = new System.Drawing.Size(231, 575);
             this.MenuFilters.TabIndex = 0;
             // 
             // MenuBrushType
@@ -143,7 +148,7 @@
             this.MenuBrushType.RowCount = 2;
             this.MenuBrushType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.90683F));
             this.MenuBrushType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.09317F));
-            this.MenuBrushType.Size = new System.Drawing.Size(225, 165);
+            this.MenuBrushType.Size = new System.Drawing.Size(225, 161);
             this.MenuBrushType.TabIndex = 0;
             // 
             // tableLayoutPanelLabels
@@ -158,7 +163,7 @@
             this.tableLayoutPanelLabels.Name = "tableLayoutPanelLabels";
             this.tableLayoutPanelLabels.RowCount = 1;
             this.tableLayoutPanelLabels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelLabels.Size = new System.Drawing.Size(219, 18);
+            this.tableLayoutPanelLabels.Size = new System.Drawing.Size(219, 17);
             this.tableLayoutPanelLabels.TabIndex = 0;
             // 
             // labelMode
@@ -168,7 +173,7 @@
             this.labelMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelMode.Location = new System.Drawing.Point(79, 0);
             this.labelMode.Name = "labelMode";
-            this.labelMode.Size = new System.Drawing.Size(137, 18);
+            this.labelMode.Size = new System.Drawing.Size(137, 17);
             this.labelMode.TabIndex = 1;
             this.labelMode.Text = "Brush";
             // 
@@ -179,7 +184,7 @@
             this.labelStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelStatic.Location = new System.Drawing.Point(3, 0);
             this.labelStatic.Name = "labelStatic";
-            this.labelStatic.Size = new System.Drawing.Size(70, 18);
+            this.labelStatic.Size = new System.Drawing.Size(70, 17);
             this.labelStatic.TabIndex = 0;
             this.labelStatic.Text = "Selected:";
             // 
@@ -190,9 +195,9 @@
             this.groupBoxMode.Controls.Add(this.buttonBrush);
             this.groupBoxMode.Controls.Add(this.buttonAddPolygon);
             this.groupBoxMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxMode.Location = new System.Drawing.Point(3, 27);
+            this.groupBoxMode.Location = new System.Drawing.Point(3, 26);
             this.groupBoxMode.Name = "groupBoxMode";
-            this.groupBoxMode.Size = new System.Drawing.Size(219, 135);
+            this.groupBoxMode.Size = new System.Drawing.Size(219, 132);
             this.groupBoxMode.TabIndex = 1;
             this.groupBoxMode.TabStop = false;
             this.groupBoxMode.Text = "Mode";
@@ -247,6 +252,12 @@
             // 
             // groupBoxFilters
             // 
+            this.groupBoxFilters.Controls.Add(this.contrastAdd);
+            this.groupBoxFilters.Controls.Add(this.contrastSub);
+            this.groupBoxFilters.Controls.Add(this.gammaAdd);
+            this.groupBoxFilters.Controls.Add(this.gammaSub);
+            this.groupBoxFilters.Controls.Add(this.BrightnessAdd);
+            this.groupBoxFilters.Controls.Add(this.BrightnessSub);
             this.groupBoxFilters.Controls.Add(this.radioButtonOwn);
             this.groupBoxFilters.Controls.Add(this.radioButtonContrast);
             this.groupBoxFilters.Controls.Add(this.radioButtonGamma);
@@ -254,17 +265,77 @@
             this.groupBoxFilters.Controls.Add(this.radioButtonNegation);
             this.groupBoxFilters.Controls.Add(this.radioButtonNoFilter);
             this.groupBoxFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxFilters.Location = new System.Drawing.Point(3, 174);
+            this.groupBoxFilters.Location = new System.Drawing.Point(3, 170);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(225, 154);
+            this.groupBoxFilters.Size = new System.Drawing.Size(225, 208);
             this.groupBoxFilters.TabIndex = 1;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Filters";
             // 
+            // contrastAdd
+            // 
+            this.contrastAdd.Location = new System.Drawing.Point(173, 149);
+            this.contrastAdd.Name = "contrastAdd";
+            this.contrastAdd.Size = new System.Drawing.Size(28, 23);
+            this.contrastAdd.TabIndex = 11;
+            this.contrastAdd.Text = "+";
+            this.contrastAdd.UseVisualStyleBackColor = true;
+            this.contrastAdd.Click += new System.EventHandler(this.contrastAdd_Click);
+            // 
+            // contrastSub
+            // 
+            this.contrastSub.Location = new System.Drawing.Point(128, 149);
+            this.contrastSub.Name = "contrastSub";
+            this.contrastSub.Size = new System.Drawing.Size(28, 23);
+            this.contrastSub.TabIndex = 10;
+            this.contrastSub.Text = "-";
+            this.contrastSub.UseVisualStyleBackColor = true;
+            this.contrastSub.Click += new System.EventHandler(this.contrastSub_Click);
+            // 
+            // gammaAdd
+            // 
+            this.gammaAdd.Location = new System.Drawing.Point(173, 117);
+            this.gammaAdd.Name = "gammaAdd";
+            this.gammaAdd.Size = new System.Drawing.Size(28, 23);
+            this.gammaAdd.TabIndex = 9;
+            this.gammaAdd.Text = "+";
+            this.gammaAdd.UseVisualStyleBackColor = true;
+            this.gammaAdd.Click += new System.EventHandler(this.gammaAdd_Click);
+            // 
+            // gammaSub
+            // 
+            this.gammaSub.Location = new System.Drawing.Point(128, 117);
+            this.gammaSub.Name = "gammaSub";
+            this.gammaSub.Size = new System.Drawing.Size(28, 23);
+            this.gammaSub.TabIndex = 8;
+            this.gammaSub.Text = "-";
+            this.gammaSub.UseVisualStyleBackColor = true;
+            this.gammaSub.Click += new System.EventHandler(this.gammaSub_Click);
+            // 
+            // BrightnessAdd
+            // 
+            this.BrightnessAdd.Location = new System.Drawing.Point(173, 84);
+            this.BrightnessAdd.Name = "BrightnessAdd";
+            this.BrightnessAdd.Size = new System.Drawing.Size(28, 23);
+            this.BrightnessAdd.TabIndex = 7;
+            this.BrightnessAdd.Text = "+";
+            this.BrightnessAdd.UseVisualStyleBackColor = true;
+            this.BrightnessAdd.Click += new System.EventHandler(this.BrightnessAdd_Click);
+            // 
+            // BrightnessSub
+            // 
+            this.BrightnessSub.Location = new System.Drawing.Point(128, 84);
+            this.BrightnessSub.Name = "BrightnessSub";
+            this.BrightnessSub.Size = new System.Drawing.Size(28, 23);
+            this.BrightnessSub.TabIndex = 6;
+            this.BrightnessSub.Text = "-";
+            this.BrightnessSub.UseVisualStyleBackColor = true;
+            this.BrightnessSub.Click += new System.EventHandler(this.BrightnessSub_Click);
+            // 
             // radioButtonOwn
             // 
             this.radioButtonOwn.AutoSize = true;
-            this.radioButtonOwn.Location = new System.Drawing.Point(9, 134);
+            this.radioButtonOwn.Location = new System.Drawing.Point(9, 181);
             this.radioButtonOwn.Name = "radioButtonOwn";
             this.radioButtonOwn.Size = new System.Drawing.Size(88, 17);
             this.radioButtonOwn.TabIndex = 5;
@@ -275,7 +346,7 @@
             // radioButtonContrast
             // 
             this.radioButtonContrast.AutoSize = true;
-            this.radioButtonContrast.Location = new System.Drawing.Point(9, 111);
+            this.radioButtonContrast.Location = new System.Drawing.Point(9, 152);
             this.radioButtonContrast.Name = "radioButtonContrast";
             this.radioButtonContrast.Size = new System.Drawing.Size(64, 17);
             this.radioButtonContrast.TabIndex = 4;
@@ -286,7 +357,7 @@
             // radioButtonGamma
             // 
             this.radioButtonGamma.AutoSize = true;
-            this.radioButtonGamma.Location = new System.Drawing.Point(9, 88);
+            this.radioButtonGamma.Location = new System.Drawing.Point(9, 120);
             this.radioButtonGamma.Name = "radioButtonGamma";
             this.radioButtonGamma.Size = new System.Drawing.Size(111, 17);
             this.radioButtonGamma.TabIndex = 3;
@@ -297,7 +368,7 @@
             // radioButtonBrightness
             // 
             this.radioButtonBrightness.AutoSize = true;
-            this.radioButtonBrightness.Location = new System.Drawing.Point(9, 65);
+            this.radioButtonBrightness.Location = new System.Drawing.Point(9, 87);
             this.radioButtonBrightness.Name = "radioButtonBrightness";
             this.radioButtonBrightness.Size = new System.Drawing.Size(113, 17);
             this.radioButtonBrightness.TabIndex = 2;
@@ -308,7 +379,7 @@
             // radioButtonNegation
             // 
             this.radioButtonNegation.AutoSize = true;
-            this.radioButtonNegation.Location = new System.Drawing.Point(9, 42);
+            this.radioButtonNegation.Location = new System.Drawing.Point(9, 54);
             this.radioButtonNegation.Name = "radioButtonNegation";
             this.radioButtonNegation.Size = new System.Drawing.Size(68, 17);
             this.radioButtonNegation.TabIndex = 1;
@@ -333,7 +404,7 @@
             // 
             this.pictureBoxOwnFunction.BackColor = System.Drawing.Color.White;
             this.pictureBoxOwnFunction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxOwnFunction.Location = new System.Drawing.Point(3, 334);
+            this.pictureBoxOwnFunction.Location = new System.Drawing.Point(3, 384);
             this.pictureBoxOwnFunction.Name = "pictureBoxOwnFunction";
             this.pictureBoxOwnFunction.Size = new System.Drawing.Size(225, 188);
             this.pictureBoxOwnFunction.TabIndex = 2;
@@ -362,7 +433,7 @@
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.71287F));
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.950495F));
             this.tableLayoutPanelHistograms.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.72277F));
-            this.tableLayoutPanelHistograms.Size = new System.Drawing.Size(251, 525);
+            this.tableLayoutPanelHistograms.Size = new System.Drawing.Size(251, 575);
             this.tableLayoutPanelHistograms.TabIndex = 1;
             // 
             // labelB
@@ -370,9 +441,9 @@
             this.labelB.AutoSize = true;
             this.labelB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelB.Location = new System.Drawing.Point(3, 350);
+            this.labelB.Location = new System.Drawing.Point(3, 386);
             this.labelB.Name = "labelB";
-            this.labelB.Size = new System.Drawing.Size(245, 25);
+            this.labelB.Size = new System.Drawing.Size(245, 28);
             this.labelB.TabIndex = 5;
             this.labelB.Text = "B:";
             // 
@@ -381,9 +452,9 @@
             this.labelG.AutoSize = true;
             this.labelG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelG.Location = new System.Drawing.Point(3, 175);
+            this.labelG.Location = new System.Drawing.Point(3, 193);
             this.labelG.Name = "labelG";
-            this.labelG.Size = new System.Drawing.Size(245, 25);
+            this.labelG.Size = new System.Drawing.Size(245, 28);
             this.labelG.TabIndex = 3;
             this.labelG.Text = "G:";
             // 
@@ -394,45 +465,45 @@
             this.labelR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelR.Location = new System.Drawing.Point(3, 0);
             this.labelR.Name = "labelR";
-            this.labelR.Size = new System.Drawing.Size(245, 25);
+            this.labelR.Size = new System.Drawing.Size(245, 28);
             this.labelR.TabIndex = 1;
             this.labelR.Text = "R:";
             // 
             // histR
             // 
-            chartArea13.Name = "ChartArea1";
-            this.histR.ChartAreas.Add(chartArea13);
-            this.histR.Location = new System.Drawing.Point(3, 28);
+            chartArea7.Name = "ChartArea1";
+            this.histR.ChartAreas.Add(chartArea7);
+            this.histR.Location = new System.Drawing.Point(3, 31);
             this.histR.Name = "histR";
-            series13.ChartArea = "ChartArea1";
-            series13.Name = "Series1";
-            this.histR.Series.Add(series13);
+            series7.ChartArea = "ChartArea1";
+            series7.Name = "Series1";
+            this.histR.Series.Add(series7);
             this.histR.Size = new System.Drawing.Size(245, 144);
             this.histR.TabIndex = 7;
             this.histR.Text = "histogramr";
             // 
             // histG
             // 
-            chartArea14.Name = "ChartArea1";
-            this.histG.ChartAreas.Add(chartArea14);
-            this.histG.Location = new System.Drawing.Point(3, 203);
+            chartArea8.Name = "ChartArea1";
+            this.histG.ChartAreas.Add(chartArea8);
+            this.histG.Location = new System.Drawing.Point(3, 224);
             this.histG.Name = "histG";
-            series14.ChartArea = "ChartArea1";
-            series14.Name = "Series1";
-            this.histG.Series.Add(series14);
+            series8.ChartArea = "ChartArea1";
+            series8.Name = "Series1";
+            this.histG.Series.Add(series8);
             this.histG.Size = new System.Drawing.Size(245, 144);
             this.histG.TabIndex = 8;
             this.histG.Text = "chart1";
             // 
             // histB
             // 
-            chartArea15.Name = "ChartArea1";
-            this.histB.ChartAreas.Add(chartArea15);
-            this.histB.Location = new System.Drawing.Point(3, 378);
+            chartArea9.Name = "ChartArea1";
+            this.histB.ChartAreas.Add(chartArea9);
+            this.histB.Location = new System.Drawing.Point(3, 417);
             this.histB.Name = "histB";
-            series15.ChartArea = "ChartArea1";
-            series15.Name = "Series1";
-            this.histB.Series.Add(series15);
+            series9.ChartArea = "ChartArea1";
+            series9.Name = "Series1";
+            this.histB.Series.Add(series9);
             this.histB.Size = new System.Drawing.Size(245, 144);
             this.histB.TabIndex = 9;
             this.histB.Text = "chart1";
@@ -444,15 +515,16 @@
             this.panelPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPhoto.Location = new System.Drawing.Point(3, 3);
             this.panelPhoto.Name = "panelPhoto";
-            this.panelPhoto.Size = new System.Drawing.Size(578, 531);
+            this.panelPhoto.Size = new System.Drawing.Size(578, 581);
             this.panelPhoto.TabIndex = 2;
             // 
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.MaximumSize = new System.Drawing.Size(0, 9999);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(469, 531);
+            this.pictureBox.Size = new System.Drawing.Size(0, 531);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
@@ -463,8 +535,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
@@ -486,21 +557,15 @@
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.ClientSize = new System.Drawing.Size(1084, 611);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1000, 600);
+            this.MinimumSize = new System.Drawing.Size(1000, 650);
             this.Name = "Form1";
             this.Text = "Photo Filters";
             this.MainPanel.ResumeLayout(false);
@@ -537,7 +602,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelLabels;
         private System.Windows.Forms.Label labelStatic;
         private System.Windows.Forms.Label labelMode;
@@ -563,6 +627,12 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart histR;
         private System.Windows.Forms.DataVisualization.Charting.Chart histG;
         private System.Windows.Forms.DataVisualization.Charting.Chart histB;
+        private System.Windows.Forms.Button BrightnessAdd;
+        private System.Windows.Forms.Button BrightnessSub;
+        private System.Windows.Forms.Button gammaAdd;
+        private System.Windows.Forms.Button gammaSub;
+        private System.Windows.Forms.Button contrastAdd;
+        private System.Windows.Forms.Button contrastSub;
     }
 }
 

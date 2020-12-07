@@ -47,8 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircularBrush.cs" />
     <Compile Include="DirectBitmap.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Filters\BrightnessChangeFilter.cs" />
+    <Compile Include="Filters\ContrastFilter.cs" />
+    <Compile Include="Filters\GammaCorrectionFilter.cs" />
     <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Filters\NegationFilter.cs" />
+    <Compile Include="Filters\OwnFunctionFilter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

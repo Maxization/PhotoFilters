@@ -11,40 +11,26 @@ using System.Windows.Forms;
 
 namespace GK3
 {
-    enum ModeType
-    {
-        AddPolygon,
-        Brush,
-        DeletePolygon,
-        TheWholePicture,
-    }
-
-    public enum FilterType
-    {
-        NoFilter,
-        Negation,
-        BrightnessChange,
-        GammaCorrection,
-        Contrast,
-        OwnFunction
-    }
-
     public partial class Form1 : Form
     {
+        const int OWN_FUNCTION_POINTS = 10;
         ModeType mode;
         FilterType filterType;
         IFilter filter;
+
+        BrightnessChangeFilter brightnessFilter;
+        GammaCorrectionFilter gammaFilter;
+        ContrastFilter contrastFilter;
 
         DirectBitmap photo;
         DirectBitmap orginalPicture;
         DirectBitmap transformedPicture;
         DirectBitmap ownFunctionPicture;
         Bitmap beforeCreating;
-        MyBrush brush;
 
         Edge newEdge;
         Vertex newPoint, startPoint;
-        
+
         List<Polygon> polygons;
         Polygon newPolygon;
 
@@ -59,7 +45,6 @@ namespace GK3
             orginalPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
             transformedPicture = new DirectBitmap(GK3.Properties.Resources.Lenna);
             ownFunctionPicture = new DirectBitmap(300, 300);
-            brush = new MyBrush();
 
             pictureBox.Image = photo.Bitmap;
             pictureBoxOwnFunction.Image = ownFunctionPicture.Bitmap;
@@ -67,22 +52,22 @@ namespace GK3
 
             isPolygonCreating = false;
             isDrawing = false;
-            ownFunction = new Vertex[10];
+            ownFunction = new Vertex[OWN_FUNCTION_POINTS];
             FillFunction(ownFunction);
-            
+
             setMode(ModeType.AddPolygon);
             filterType = FilterType.NoFilter;
 
             filter = new NegationFilter();
-            IFilter brightness = new BrightnessChangeFilter();
-            IFilter contrast = new ContrastFilter();
-            IFilter gammaCorrection = new GammaCorrectionFilter();
+            brightnessFilter = new BrightnessChangeFilter();
+            contrastFilter = new ContrastFilter();
+            gammaFilter = new GammaCorrectionFilter();
             IFilter ownFunctionFilter = new OwnFunctionFilter(ownFunction);
 
-            filter.setNext(brightness);
-            brightness.setNext(contrast);
-            contrast.setNext(gammaCorrection);
-            gammaCorrection.setNext(ownFunctionFilter);
+            filter.setNext(brightnessFilter);
+            brightnessFilter.setNext(contrastFilter);
+            contrastFilter.setNext(gammaFilter);
+            gammaFilter.setNext(ownFunctionFilter);
 
             histR.Series[0].Color = Color.Red;
             histG.Series[0].Color = Color.Green;
@@ -93,17 +78,7 @@ namespace GK3
             UpdatePhoto();
         }
 
-        void FillFunction(Vertex[] ownF)
-        {
-            ownF[0] = new Vertex(0, 0);
-            ownF[9] = new Vertex(255, 255);
-
-            Random rnd = new Random(2137);
-            for(int i=1;i<9;i++)
-            {
-                ownF[i] = new Vertex(i * 26, rnd.Next(0, 256));
-            }
-        }
+        
         void LoadPhoto(Bitmap b)
         {
             photo.Dispose();
@@ -128,16 +103,16 @@ namespace GK3
             foreach (var poly in polygons)
             {
                 if (poly.isValid)
-                    poly.Fill(photo, transformedPicture);
+                    poly.Fill(photo, transformedPicture, orginalPicture);
                 poly.Draw(photo);
             }
 
-            if(!isDrawing)
+            if (!isDrawing)
             {
                 var data = CreateHistogramR();
                 DrawHistogram(data);
             }
-                
+
             pictureBox.Invalidate();
         }
 
@@ -168,42 +143,6 @@ namespace GK3
             }
         }
 
-        void DrawOwnFunctionAxis()
-        {
-            using (Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
-            {
-                Font myFont = new Font("Arial", 8);
-                g.DrawLine(Pens.Black, 20, 20, 20, 170);
-                g.DrawLine(Pens.Black, 20, 170, 200, 170);
-                g.DrawString("255", myFont, Brushes.Black, 0, 20);
-                g.DrawString("0", myFont, Brushes.Black, 10, 170);
-                g.DrawString("255", myFont, Brushes.Black, 170, 170);
-            }
-        }
-        void DrawOwnFunction()
-        {
-            using(Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
-            {
-                g.Clear(Color.White);
-                DrawOwnFunctionAxis();
-                int x1, y1;
-                x1 = y1 = 0;
-                for(int i=0;i<10;i++)
-                {
-                    var k = FromPlotToPicturebox(ownFunction[i]);
-
-                    g.FillEllipse(Brushes.Black, k.X - 3, k.Y - 3, 6, 6);
-                    if(i!=0)
-                    {
-                        g.DrawLine(Pens.Black, x1, y1, k.X, k.Y);
-                    }
-                    x1 = k.X;
-                    y1 = k.Y;
-                } 
-            }
-            pictureBoxOwnFunction.Invalidate();
-        }
-
         (int X, int Y) FromPlotToPicturebox(Vertex v)
         {
             (int X, int Y) k;
@@ -212,7 +151,7 @@ namespace GK3
             return k;
 
         }
-        (int[] R,int[] G,int[] B) CreateHistogramR()
+        (int[] R, int[] G, int[] B) CreateHistogramR()
         {
             int[] dataR = new int[256];
             int[] dataG = new int[256];
@@ -230,10 +169,9 @@ namespace GK3
                      dataB[col.B]++;
                  }
              });
-            return (dataR, dataB, dataG);
+            return (dataR, dataG, dataB);
         }
-
-        void DrawHistogram((int[] R, int[] B, int[] G) k)
+        void DrawHistogram((int[] R, int[] G, int[] B) k)
         {
             histR.Series[0].Points.DataBindY(k.R);
             histG.Series[0].Points.DataBindY(k.G);
@@ -243,33 +181,54 @@ namespace GK3
         void DrawBrush(Point p)
         {
             if (p.X < 0 || p.Y < 0 || p.X >= pictureBox.Width || p.Y >= pictureBox.Height) return;
-            brush.Fill(transformedPicture, orginalPicture, filter, filterType, p.X, p.Y);
+            CircularBrush.Fill(transformedPicture, orginalPicture, filter, filterType, p.X, p.Y);
             UpdatePhoto();
         }
+
+        void FilterOnWholePhoto()
+        {
+            using (Graphics g = Graphics.FromImage(photo.Bitmap))
+            {
+                int width = photo.Width;
+                int height = photo.Height;
+                polygons.Clear();
+
+                for (int i = 0; i < height; i++)
+                {
+                    for (int j = 0; j < width; j++)
+                    {
+                        Color color = orginalPicture.GetPixel(j, i);
+                        Color col = filter.Handle(filterType, color);
+                        transformedPicture.SetPixel(j, i, col);
+                    }
+                }
+                UpdatePhoto();
+            }
+        }
+
         #region MainPicturebox handlers
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if(isPolygonCreating)
+            if (isPolygonCreating)
             {
                 newPoint.X = e.Location.X;
                 newPoint.Y = e.Location.Y;
                 UpdatePolygon();
             }
-            if(isDrawing)
+            if (isDrawing)
             {
                 DrawBrush(e.Location);
             }
-
         }
 
         Polygon FindClosestPoly(Point p)
         {
             double min = double.MaxValue;
             Polygon closestPoly = null;
-            foreach(Polygon poly in polygons)
+            foreach (Polygon poly in polygons)
             {
                 double tmp = poly.DistanceFromPoint(p);
-                if(tmp < min)
+                if (tmp < min)
                 {
                     min = tmp;
                     closestPoly = poly;
@@ -281,7 +240,7 @@ namespace GK3
         void DeletePolygon(Point p)
         {
             Polygon poly = FindClosestPoly(p);
-            if(poly != null)
+            if (poly != null)
             {
                 polygons.Remove(poly);
                 UpdatePhoto();
@@ -354,7 +313,6 @@ namespace GK3
         }
         #endregion
 
-
         #region Button handlers
         private void radioButtonNegation_Click(object sender, EventArgs e)
         {
@@ -418,30 +376,30 @@ namespace GK3
         }
         #endregion
 
+        #region OwnFunction
 
         bool dragVertex = false;
         Vertex movingVertex;
         int vertexNr;
         private void pictureBoxOwnFunction_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                if(!dragVertex)
-                {    
+                if (!dragVertex)
+                {
                     movingVertex = FindVertex(e.Location);
-                    if(movingVertex != null)
+                    if (movingVertex != null)
                         dragVertex = true;
                 }
             }
         }
-
         private void pictureBoxOwnFunction_MouseMove(object sender, MouseEventArgs e)
         {
-            if(dragVertex)
+            if (dragVertex)
             {
                 var k = FromPlotToPicturebox(ownFunction[vertexNr - 1]);
                 var k2 = FromPlotToPicturebox(ownFunction[vertexNr + 1]);
-                if(e.Location.X > k.X && e.Location.X < k2.X
+                if (e.Location.X > k.X && e.Location.X < k2.X
                     && e.Location.Y >= 20 && e.Location.Y <= 170)
                 {
                     movingVertex.X = (int)((e.Location.X - 20) * 1.7);
@@ -450,7 +408,6 @@ namespace GK3
                 }
             }
         }
-
         private void pictureBoxOwnFunction_MouseUp(object sender, MouseEventArgs e)
         {
             if (dragVertex)
@@ -472,25 +429,86 @@ namespace GK3
             }
             return null;
         }
-        void FilterOnWholePhoto()
+        void DrawOwnFunction()
         {
-            using(Graphics g = Graphics.FromImage(photo.Bitmap))
+            using (Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
             {
-                int width = photo.Width;
-                int height = photo.Height;
-                polygons.Clear();
-
-                for (int i = 0; i < height; i++)
+                g.Clear(Color.White);
+                DrawOwnFunctionAxis();
+                int x1, y1;
+                x1 = y1 = 0;
+                for (int i = 0; i < ownFunction.Length; i++)
                 {
-                    for (int j = 0; j < width; j++)
+                    var k = FromPlotToPicturebox(ownFunction[i]);
+
+                    g.FillEllipse(Brushes.Black, k.X - 3, k.Y - 3, 6, 6);
+                    if (i != 0)
                     {
-                        Color color = orginalPicture.GetPixel(j, i);
-                        Color col = filter.Handle(filterType, color);
-                        transformedPicture.SetPixel(j, i, col);
+                        g.DrawLine(Pens.Black, x1, y1, k.X, k.Y);
                     }
+                    x1 = k.X;
+                    y1 = k.Y;
                 }
-                UpdatePhoto();
+            }
+            pictureBoxOwnFunction.Invalidate();
+        }
+        void FillFunction(Vertex[] ownF)
+        {
+            ownF[0] = new Vertex(0, 0);
+            ownF[ownF.Length - 1] = new Vertex(255, 255);
+
+            Random rnd = new Random(2137);
+            for (int i = 1; i < ownF.Length - 1; i++)
+            {
+                ownF[i] = new Vertex(i * 26, rnd.Next(0, 256));
             }
         }
+        void DrawOwnFunctionAxis()
+        {
+            using (Graphics g = Graphics.FromImage(pictureBoxOwnFunction.Image))
+            {
+                Font myFont = new Font("Arial", 8);
+                g.DrawLine(Pens.Black, 20, 20, 20, 170);
+                g.DrawLine(Pens.Black, 20, 170, 200, 170);
+                g.DrawString("255", myFont, Brushes.Black, 0, 20);
+                g.DrawString("0", myFont, Brushes.Black, 10, 170);
+                g.DrawString("255", myFont, Brushes.Black, 170, 170);
+            }
+        }
+        #endregion
+
+        #region Change Constant In Filters
+        private void BrightnessSub_Click(object sender, EventArgs e)
+        {
+            brightnessFilter.Sub();
+        }
+
+        private void BrightnessAdd_Click(object sender, EventArgs e)
+        {
+            brightnessFilter.Add();
+        }
+
+        private void gammaSub_Click(object sender, EventArgs e)
+        {
+            gammaFilter.Sub();
+        }
+
+        private void gammaAdd_Click(object sender, EventArgs e)
+        {
+            gammaFilter.Add();
+        }
+
+        private void contrastSub_Click(object sender, EventArgs e)
+        {
+            contrastFilter.Sub();
+        }
+
+        private void contrastAdd_Click(object sender, EventArgs e)
+        {
+            contrastFilter.Add();
+        }
+
+        #endregion
+
     }
 }
