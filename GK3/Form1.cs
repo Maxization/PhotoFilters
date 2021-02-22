@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +23,7 @@ namespace GK3
         BrightnessChangeFilter brightnessFilter;
         GammaCorrectionFilter gammaFilter;
         ContrastFilter contrastFilter;
+        OwnFunctionFilter ownFunctionFilter;
 
         DirectBitmap photo;
         DirectBitmap orginalPicture;
@@ -62,7 +65,7 @@ namespace GK3
             brightnessFilter = new BrightnessChangeFilter();
             contrastFilter = new ContrastFilter();
             gammaFilter = new GammaCorrectionFilter();
-            IFilter ownFunctionFilter = new OwnFunctionFilter(ownFunction);
+            ownFunctionFilter = new OwnFunctionFilter(ownFunction);
 
             filter.setNext(brightnessFilter);
             brightnessFilter.setNext(contrastFilter);
@@ -103,13 +106,13 @@ namespace GK3
             foreach (var poly in polygons)
             {
                 if (poly.isValid)
-                    poly.Fill(photo, transformedPicture, orginalPicture);
+                    poly.Fill(photo, transformedPicture);
                 poly.Draw(photo);
             }
 
             if (!isDrawing)
             {
-                var data = CreateHistogramR();
+                var data = CreateHistogram();
                 DrawHistogram(data);
             }
 
@@ -126,6 +129,16 @@ namespace GK3
             pictureBox.Invalidate();
         }
 
+        void UpdateOwnFunction()
+        {
+            using (Graphics g = Graphics.FromImage(ownFunctionPicture.Bitmap))
+            {
+                g.Clear(Color.White);
+            }
+            DrawOwnFunctionAxis();
+            DrawOwnFunction();
+            pictureBoxOwnFunction.Invalidate();
+        }
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -151,7 +164,7 @@ namespace GK3
             return k;
 
         }
-        (int[] R, int[] G, int[] B) CreateHistogramR()
+        (int[] R, int[] G, int[] B) CreateHistogram()
         {
             int[] dataR = new int[256];
             int[] dataG = new int[256];
@@ -307,7 +320,7 @@ namespace GK3
             if (isDrawing)
             {
                 isDrawing = false;
-                var data = CreateHistogramR();
+                var data = CreateHistogram();
                 DrawHistogram(data);
             }
         }
@@ -501,6 +514,34 @@ namespace GK3
         private void contrastSub_Click(object sender, EventArgs e)
         {
             contrastFilter.Sub();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("ownfunction.dat", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fs, ownFunction);
+            MessageBox.Show("Own function saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void loadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("ownfunction.dat", FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            Vertex[] tmp;
+            try
+            {
+                tmp = (Vertex[])formatter.Deserialize(fs);
+                ownFunction = tmp;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error when deserializing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            fs.Close();
+            ownFunctionFilter.ChangeFunction(ownFunction);
+            UpdateOwnFunction();
+            MessageBox.Show("Own function loaded", "Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void contrastAdd_Click(object sender, EventArgs e)

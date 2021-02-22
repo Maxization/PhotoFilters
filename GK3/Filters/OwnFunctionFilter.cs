@@ -16,6 +16,10 @@ namespace GK3.Filters
             this.ownFunction = ownFunction;
         }
 
+        public void ChangeFunction(Vertex[] tab)
+        {
+            ownFunction = tab;
+        }
         public override Color Handle(FilterType type, Color color)
         {
             if (filterType == type)

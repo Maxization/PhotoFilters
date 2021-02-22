@@ -72,6 +72,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel.SuspendLayout();
             this.UserMenu.SuspendLayout();
             this.MenuFilters.SuspendLayout();
@@ -535,7 +538,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.saveFunctionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
@@ -553,9 +557,32 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // saveFunctionToolStripMenuItem
+            // 
+            this.saveFunctionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem1});
+            this.saveFunctionToolStripMenuItem.Name = "saveFunctionToolStripMenuItem";
+            this.saveFunctionToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.saveFunctionToolStripMenuItem.Text = "Own function";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem1
+            // 
+            this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
+            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem1.Text = "Load";
+            this.loadToolStripMenuItem1.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -633,6 +660,9 @@
         private System.Windows.Forms.Button gammaSub;
         private System.Windows.Forms.Button contrastAdd;
         private System.Windows.Forms.Button contrastSub;
+        private System.Windows.Forms.ToolStripMenuItem saveFunctionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem1;
     }
 }
 

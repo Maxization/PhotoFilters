@@ -22,6 +22,8 @@ namespace GK3
             this.next = next;
         }
     }
+   
+    [Serializable]
     public class Vertex
     {
         public int X, Y;
@@ -31,6 +33,8 @@ namespace GK3
             this.X = X;
             this.Y = Y;
         }
+
+        public Vertex() { }
 
         public double DistanceToPoint(Point p)
         {
@@ -158,7 +162,7 @@ namespace GK3
             }
             return (ET, edgeCounter);
         }
-        public void Fill(DirectBitmap actualBm, DirectBitmap transformedBm, DirectBitmap orginalBm)
+        public void Fill(DirectBitmap actualBm, DirectBitmap transformedBm)
         {
             List<NodeAET>[] ET;
             int edgeCounter;
@@ -195,11 +199,8 @@ namespace GK3
                     for (int x = xMin; x <= xMax; x++)
                     {
                         Color col = transformedBm.GetPixel(x, y);
-                        Color color;
-                        if (filterType == FilterType.NoFilter)
-                            color = orginalBm.GetPixel(x, y);
-                        else
-                            color = filter.Handle(filterType, col);
+                        Color color = filter.Handle(filterType, col);
+                            
                         actualBm.SetPixel(x, y, color);
                     }
                 }
